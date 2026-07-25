@@ -163,7 +163,7 @@ body { margin: 0; background: var(--bg-main); color: var(--text-main); font-fami
     <div class="bottom-nav">
         <button class="nav-item active" onclick="nav('homeSec', this)">
             <i class="fas fa-home"></i>
-            <span class="nav-text">হোম</span>
+            <span class="nav-text">Home</span>
         </button>
         <button class="nav-item" onclick="nav('likedSec', this)">
             <i class="fas fa-heart"></i>
@@ -368,8 +368,8 @@ function playMixedSequence(videoId, link, req) {
     const txt = document.getElementById('loadingText');
     txt.innerText = "Loading Ad...";
     
-    if(typeof show_11388088 === 'function') {
-        show_11388088().then(() => {
+    if(typeof show_11383419 === 'function') {
+        show_11383419().then(() => {
             startFinalCountdown(videoId, link, req);
         }).catch(e => {
             startFinalCountdown(videoId, link, req);
