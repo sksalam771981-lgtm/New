@@ -12,8 +12,8 @@
 <!-- TELEGRAM WEB APP SDK -->
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
-<!-- ADSGRAM SCRIPT -->
-<script src="https://sad.adsgram.ai/js/sad.min.js"></script>
+<!-- MONETAG SDK -->
+<script src='//libtl.com/sdk.js' data-zone='11388088' data-sdk='show_11388088'></script>
 
 <style>
 /* --- DESIGN SYSTEM --- */
@@ -41,14 +41,14 @@ body { margin: 0; background: var(--bg-main); color: var(--text-main); font-fami
 .card { background: var(--bg-card); border-radius: 16px; overflow: hidden; border: var(--border); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
 .banner-wrapper { width: 100%; overflow: hidden; border-radius: 12px; margin: 5px 0; text-align: center; background: #000; }
 .banner-wrapper img { max-width: 100%; height: auto; display: block; margin: 0 auto; }
-.media { position: relative; padding-bottom: 56.25%; background: black; }
+.media { position: relative; padding-bottom: 56.25%; background: black; cursor: pointer; }
 .media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.heart-btn { position: absolute; top: 10px; right: 10px; width: 36px; height: 36px; border-radius: 50%; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); border: none; color: white; display: flex; align-items: center; justify-content: center; font-size: 16px; cursor: pointer; }
+.heart-btn { position: absolute; top: 10px; right: 10px; width: 36px; height: 36px; border-radius: 50%; background: rgba(0,0,0,0.5); backdrop-filter: blur(4px); border: none; color: white; display: flex; align-items: center; justify-content: center; font-size: 16px; cursor: pointer; z-index: 5; }
 .meta { padding: 15px; }
 
-/* Meta Header for Title and View Count */
 .meta-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
-.meta h3 { margin: 0; font-size: 16px; line-height: 1.4; font-weight: 600; flex: 1; }
+.meta h3 { margin: 0; font-size: 16px; line-height: 1.4; font-weight: 600; flex: 1; cursor: pointer; }
+.meta h3:hover { color: #a855f7; }
 .view-count-badge { font-size: 11px; color: #9ca3af; background: rgba(255,255,255,0.05); padding: 4px 8px; border-radius: 6px; display: flex; align-items: center; gap: 5px; white-space: nowrap; border: 1px solid rgba(255,255,255,0.05); }
 
 .actions { display: flex; gap: 10px; }
@@ -114,7 +114,7 @@ body { margin: 0; background: var(--bg-main); color: var(--text-main); font-fami
 
     <!-- SINGLE VIEW -->
     <div id="singleView" class="single-view">
-        <button onclick="closeSingle()" style="background:#2d2d44; color:white; border:none; padding:10px 20px; border-radius:50px; margin-bottom:20px; display:flex; align-items:center; gap:8px;">
+        <button onclick="closeSingle()" style="background:#2d2d44; color:white; border:none; padding:10px 20px; border-radius:50px; margin-bottom:20px; display:flex; align-items:center; gap:8px; cursor:pointer;">
             <i class="fas fa-arrow-left"></i> ফিরে যান
         </button>
         <div id="singleCardContainer"></div>
@@ -123,8 +123,8 @@ body { margin: 0; background: var(--bg-main); color: var(--text-main); font-fami
     <!-- MAIN CONTENT -->
     <div id="mainContent">
         <div class="header">
-            <h1 class="title"> VIRAL ZONE VIDEO<i class="fas fa-fire" style="color:#ec4899"></i></h1>
-            <div class="subtitle">Exclusive Premium Video </div>
+            <h1 class="title"> VIRAL ZONE VIDEO <i class="fas fa-fire" style="color:#ec4899"></i></h1>
+            <div class="subtitle">Exclusive Premium Video</div>
         </div>
 
         <div id="homeSec" class="fadeIn">
@@ -148,8 +148,8 @@ body { margin: 0; background: var(--bg-main); color: var(--text-main); font-fami
             <div class="info-box">
                 <div id="tutEmbed" style="width:100%; aspect-ratio:16/9; background:#000; border-radius:10px; margin-bottom:20px;"></div>
                 <div class="step"><div class="step-num">১</div><div style="font-size:13px; color:#ddd;">UNLOCK বাটনে ক্লিক করুন।</div></div>
-                <div class="step"><div class="step-num">২</div><div style="font-size:13px; color:#ddd;">৩টি অ্যাড আসবে, ওই অ্যাড গুলো সম্পূর্ণভাবে দেখুন।</div></div>
-                <div class="step"><div class="step-num">৩</div><div style="font-size:13px; color:#ddd;">শেষে ৫ সেকেন্ড অপেক্ষা করলে আনলক হবে।</div></div>
+                <div class="step"><div class="step-num">২</div><div style="font-size:13px; color:#ddd;">অ্যাডটি সম্পূর্ণ দেখুন।</div></div>
+                <div class="step"><div class="step-num">৩</div><div style="font-size:13px; color:#ddd;">রিকোয়ারমেন্ট পূরণ হলে ভিডিও আনলক হয়ে যাবে।</div></div>
             </div>
         </div>
 
@@ -159,7 +159,7 @@ body { margin: 0; background: var(--bg-main); color: var(--text-main); font-fami
         </div>
     </div>
 
-    <!-- UPDATED BOTTOM NAV -->
+    <!-- BOTTOM NAV -->
     <div class="bottom-nav">
         <button class="nav-item active" onclick="nav('homeSec', this)">
             <i class="fas fa-home"></i>
@@ -186,14 +186,14 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebas
 import { getDatabase, ref, onValue, runTransaction } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-database.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCtKYGQ-fvuVifuDNJ_tlNmKJ2gjEqyYWU",
-  authDomain: "viralzone-3e974.firebaseapp.com",
-  databaseURL: "https://viralzone-3e974-default-rtdb.firebaseio.com",
-  projectId: "viralzone-3e974",
-  storageBucket: "viralzone-3e974.firebasestorage.app",
-  messagingSenderId: "63267470809",
-  appId: "1:63267470809:web:fa7f5d92063e69c42aadc8",
-  measurementId: "G-7L6FPDW7X2"
+    apiKey: "AIzaSyBKX_zPy3ZUMVLIY0Hlla1w3izsvAKDKVw",
+  authDomain: "inkam-342f4.firebaseapp.com",
+  databaseURL: "https://inkam-342f4-default-rtdb.firebaseio.com",
+  projectId: "inkam-342f4",
+  storageBucket: "inkam-342f4.firebasestorage.app",
+  messagingSenderId: "274696441209",
+  appId: "1:274696441209:web:80cdfba710d32129dfb3a8",
+  measurementId: "G-C1ZS6G9NVR"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -202,19 +202,17 @@ const tg = window.Telegram.WebApp; tg.expand();
 const currentUserId = tg.initDataUnsafe?.user?.id || Math.floor(Math.random() * 90000000) + 10000000;
 
 let allVideos=[], filters=[], menuLinks=[];
-let adsgramIds=[], bannerAds=[]; 
+let bannerAds=[]; 
 let settings={ ads_limit: 20, bot_app_link: "", monetag_id: "" };
 let currentFilter = 'all';
 let monetagLoaded = false;
 
 function init() {
-    // সেটিংস লোড
     onValue(ref(db, 'settings'), s => { 
         if(s.val()) {
             settings = s.val();
             if(settings.tutorial_id) document.getElementById('tutEmbed').innerHTML=`<iframe src="${settings.tutorial_id}" style="width:100%;height:100%;border:0" allowfullscreen></iframe>`;
             
-            // মনেট্যাগ অ্যাড লোড
             if(settings.monetag_id && !monetagLoaded) {
                 const script = document.createElement('script');
                 script.src = '//libtl.com/sdk.js';
@@ -226,49 +224,37 @@ function init() {
         }
     });
 
-    // অ্যাডস কনফিগারেশন লোড
     onValue(ref(db, 'ads_config'), s => { 
-        adsgramIds = []; bannerAds = [];
+        bannerAds = [];
         if(s.val()) {
-            if(s.val().interstitial_ids) Object.values(s.val().interstitial_ids).forEach(id => adsgramIds.push(id));
             if(s.val().banners) Object.values(s.val().banners).forEach(b => bannerAds.push(b));
         }
-        renderCards(); // অ্যাড লোড হলে আবার রেন্ডার হবে
+        renderCards(); 
     });
 
-    // লিংক এবং ফিল্টার লোড
     onValue(ref(db, 'links'), s => { menuLinks=[]; if(s.val()) Object.values(s.val()).forEach(v=>menuLinks.push(v)); renderLinks(); });
     onValue(ref(db, 'filters'), s => { filters=[]; if(s.val()) Object.values(s.val()).forEach(v=>filters.push(v)); });
 
-    // ভিডিও লোড এবং ডিপ লিংক হ্যান্ডলিং (FIXED)
     onValue(ref(db, 'videos'), s => {
         allVideos = [];
         if(s.val()) Object.entries(s.val()).forEach(([k,v])=>allVideos.push({id:k,...v}));
         allVideos.reverse();
         
         renderFilters();
-        renderCards(); // আগে সব ভিডিও দেখাবে
+        renderCards(); 
         renderLiked();
-
-        // এরপর চেক করবে লিংক আছে কিনা
         checkDeepLink();
     });
 }
 
-// ডিপ লিংক চেক করার ফাংশন (শেয়ার করা লিংক কাজ করার জন্য)
 function checkDeepLink() {
     const startParam = tg.initDataUnsafe?.start_param || new URLSearchParams(window.location.search).get('file');
-    
     if(startParam) {
         let videoId = startParam.split('_')[0];
-        // ভিডিওটি ডাটাবেসে আছে কিনা চেক করা
         const targetVideo = allVideos.find(v => v.id === videoId);
-        
         if(targetVideo) {
-            console.log("Opening shared video:", videoId);
             openSingle(videoId);
         } else {
-            console.log("Shared video not found in database.");
             showToast("ভিডিওটি খুঁজে পাওয়া যায়নি!");
         }
     }
@@ -313,13 +299,13 @@ function createCard(v) {
     const el = document.createElement('div');
     el.className = 'card';
     el.innerHTML = `
-        <div class="media">
+        <div class="media" onclick="handleCardClick('${v.id}', '${v.download_link}', ${req})">
             <img src="${v.image_url}" onerror="this.src='https://via.placeholder.com/400'">
-            <button class="heart-btn" onclick="toggleLike('${v.id}')"><i class="${liked?'fas':'far'} fa-heart" style="color:${liked?'#ec4899':'white'}"></i></button>
+            <button class="heart-btn" onclick="event.stopPropagation(); toggleLike('${v.id}')"><i class="${liked?'fas':'far'} fa-heart" style="color:${liked?'#ec4899':'white'}"></i></button>
         </div>
         <div class="meta">
             <div class="meta-header">
-                <h3>${v.name}</h3>
+                <h3 onclick="handleCardClick('${v.id}', '${v.download_link}', ${req})">${v.name}</h3>
                 <div class="view-count-badge">
                     <i class="fas fa-eye"></i> ${views}
                 </div>
@@ -332,6 +318,18 @@ function createCard(v) {
             </div>
         </div>`;
     return el;
+}
+
+window.handleCardClick = (id, link, req) => {
+    const count = getProgress(id);
+    if(count >= req) {
+        window.open(link, '_blank');
+        // লিংক খোলার সাথে সাথেই প্রোগ্রেস রিসেট করে দেওয়া হচ্ছে যাতে পরবর্তীতে আবার লক হয়ে যায়
+        sessionStorage.removeItem('p_' + id);
+        renderCards();
+    } else {
+        openSingle(id);
+    }
 }
 
 window.copyLink = (id) => {
@@ -347,76 +345,84 @@ window.copyLink = (id) => {
     showToast("Share Link Copied!");
 }
 
-function playMixedSequence(step, videoId, link, req) {
-    const txt = document.getElementById('loadingText');
-    if(step >= 3) {
-        startFinalCountdown(videoId, req);
-        return;
+window.handleUnlock = (id, link, req) => {
+    const count = getProgress(id);
+    if(count >= req) { 
+        window.open(link, '_blank'); 
+        // লিংক খোলার সাথে সাথেই প্রোগ্রেস রিসেট করে দেওয়া হচ্ছে যাতে পরবর্তীতে আবার লক হয়ে যায়
+        sessionStorage.removeItem('p_' + id);
+        renderCards();
+        return; 
     }
-    const delay = 500; 
-    setTimeout(() => {
-        if(step === 1) {
-            if(settings.monetag_id) {
-                txt.innerText = "Loading Partner Ad...";
-                const sdkFunc = window['show_' + settings.monetag_id];
-                if(typeof sdkFunc === 'function') {
-                    sdkFunc().then(() => playMixedSequence(step + 1, videoId, link, req))
-                           .catch(e => playMixedSequence(step + 1, videoId, link, req));
-                } else { playMixedSequence(step + 1, videoId, link, req); }
-            } else { playMixedSequence(step + 1, videoId, link, req); }
-        } 
-        else {
-            txt.innerText = "Loading Video Ad...";
-            if(window.Adsgram) {
-                const blockId = adsgramIds[step % adsgramIds.length];
-                const AdController = window.Adsgram.init({ blockId: blockId });
-                AdController.show().then((result) => playMixedSequence(step + 1, videoId, link, req))
-                            .catch((result) => playMixedSequence(step + 1, videoId, link, req));
-            } else { playMixedSequence(step + 1, videoId, link, req); }
-        }
-    }, delay);
+    
+    if(getDaily() >= (settings.ads_limit||20)) { 
+        showToast("Daily limit reached!"); 
+        return; 
+    }
+
+    showOverlay("Processing...");
+    playMixedSequence(id, link, req);
 }
 
-// ভিউ কাউন্ট বাড়ানোর ফাংশন
+function playMixedSequence(videoId, link, req) {
+    const txt = document.getElementById('loadingText');
+    txt.innerText = "Loading Ad...";
+    
+    if(typeof show_11388088 === 'function') {
+        show_11388088().then(() => {
+            startFinalCountdown(videoId, link, req);
+        }).catch(e => {
+            startFinalCountdown(videoId, link, req);
+        });
+    } else { 
+        startFinalCountdown(videoId, link, req); 
+    }
+}
+
 function incrementViewCount(videoId) {
     const storageKey = 'viewed_event_' + videoId;
-    if(localStorage.getItem(storageKey)) return;
+    if(sessionStorage.getItem(storageKey)) return;
 
     const vidRef = ref(db, 'videos/' + videoId + '/view_count');
     runTransaction(vidRef, (currentViews) => {
         return (currentViews || 0) + 1;
     }).then(() => {
-        localStorage.setItem(storageKey, 'true');
+        sessionStorage.setItem(storageKey, 'true'); 
     }).catch(err => console.error("View update failed", err));
 }
 
-function startFinalCountdown(videoId, req) {
-    let count = 5;
+function startFinalCountdown(videoId, link, req) {
+    let count = 3;
     const txt = document.getElementById('loadingText');
     const sub = document.getElementById('loadingSub');
-    txt.innerText = `Verification Successful!`;
-    sub.innerText = `Unlocking in ${count} seconds...`;
+    txt.innerText = `Ad Completed Successfully!`;
+    sub.innerText = `Updating in ${count} seconds...`;
     const timer = setInterval(() => {
         count--;
-        if(count > 0) { sub.innerText = `Unlocking in ${count} seconds...`; } 
+        if(count > 0) { sub.innerText = `Updating in ${count} seconds...`; } 
         else {
             clearInterval(timer);
             
             const currentProgress = getProgress(videoId) + 1;
-            localStorage.setItem('p_'+videoId, currentProgress);
-            
-            // ৩০ মিনিট পর আবার লক হয়ে যাওয়ার সময় সেট করা (৩০ মিনিট = ৩০ * ৬০ * ১০০০ মি.সে.)
-            localStorage.setItem('expire_'+videoId, Date.now() + (2 * 60 * 1000));
-            
+            sessionStorage.setItem('p_'+videoId, currentProgress);
+
             incDaily(); 
 
             if(currentProgress >= req) {
-                incrementViewCount(videoId);
+      incrementViewCount(videoId);
             }
 
             renderCards();
             if(document.getElementById('singleView').style.display==='block') openSingle(videoId);
-            hideOverlay(); showToast("Unlock Successful!");
+            hideOverlay(); 
+            showToast("Progress Updated!");
+            
+            if(currentProgress >= req) {
+                window.open(link, '_blank');
+                // লিংক খোলার পর প্রোগ্রেস রিসেট করা হচ্ছে
+                sessionStorage.removeItem('p_' + videoId);
+                renderCards();
+            }
         }
     }, 1000);
 }
@@ -444,22 +450,10 @@ window.setFilter = (id, btn) => { currentFilter=id; renderFilters(); renderCards
 document.getElementById('searchInput').oninput = renderCards;
 function getLiked(){ return JSON.parse(localStorage.getItem('likes')||'[]'); }
 window.toggleLike=(id)=>{ let l=getLiked(); if(l.includes(id)) l=l.filter(x=>x!==id); else l.push(id); localStorage.setItem('likes',JSON.stringify(l)); renderCards(); renderLiked(); }
-
-function getProgress(id){ 
-    const expireTime = localStorage.getItem('expire_'+id);
-    if (expireTime && Date.now() > parseInt(expireTime)) {
-        localStorage.removeItem('p_'+id);
-        localStorage.removeItem('expire_'+id);
-        return 0;
-    }
-    return parseInt(localStorage.getItem('p_'+id)||0); 
-}
-
-function incProgress(id){ localStorage.setItem('p_'+id, getProgress(id)+1); }
+function getProgress(id){ return parseInt(sessionStorage.getItem('p_'+id)||0); }
 function getDaily(){ const d=JSON.parse(localStorage.getItem('daily')||'{}'); return d.date===new Date().toDateString()?d.count:0; }
 function incDaily(){ localStorage.setItem('daily', JSON.stringify({date:new Date().toDateString(), count:getDaily()+1})); }
 
-// সিঙ্গেল ভিডিও ওপেন করার লজিক
 window.openSingle = (id) => { 
     const v = allVideos.find(x => x.id === id); 
     if(!v) return; 
@@ -476,7 +470,6 @@ window.openSingle = (id) => {
 window.closeSingle = () => { 
     document.getElementById('singleView').classList.remove('active'); 
     document.getElementById('mainContent').style.display='block'; 
-    
     window.history.pushState({}, '', window.location.pathname); 
     renderCards(); 
 }
@@ -485,3 +478,4 @@ init();
 </script>
 </body>
 </html>
+       
