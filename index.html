@@ -13,7 +13,7 @@
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
 <!-- MONETAG SDK -->
-
+<script src='//libtl.com/sdk.js' data-zone='11383419' data-sdk='show_11383419'></script>
 <style>
 /* --- DESIGN SYSTEM --- */
 :root { --primary: #8b5cf6; --primary-gradient: linear-gradient(135deg, #8b5cf6, #ec4899); --bg-main: #0f0f23; --bg-card: #1a1a2e; --bg-nav: rgba(30, 30, 48, 0.95); --text-main: #ffffff; --text-muted: #9ca3af; --border: 1px solid rgba(255,255,255,0.08); }
@@ -367,8 +367,15 @@ function playMixedSequence(videoId, link, req) {
     const txt = document.getElementById('loadingText');
     txt.innerText = "Loading Ad...";
     
-    window.open("https://www.effectivecpmnetwork.com/isey6ammc?key=f907b252da2d1ff702c517f3e59d44ba","_blank");
-    startFinalCountdown(videoId, link, req);
+    if(typeof show_11383419 === 'function') {
+        show_11383419().then(() => {
+            startFinalCountdown(videoId, link, req);
+        }).catch(e => {
+            startFinalCountdown(videoId, link, req);
+        });
+    } else { 
+        startFinalCountdown(videoId, link, req); 
+    }
 }
 
 function incrementViewCount(videoId) {
